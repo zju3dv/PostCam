@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+*.pyo
+
+.codex/
+
+output/
+
+test/metadata.json
+test/vggt/
+
+checkpoints/*
+!checkpoints/README.md
+

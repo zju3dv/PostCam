@@ -1,0 +1,43 @@
+dataset:
+  metadata_paths: []
+  dataset_types:
+  - test
+  use_saved_latent: False
+  sample_size: [480, 832]
+  sample_stride: [1]
+  sample_n_frames: 81
+  cam_idx: 1
+  traj_txt_path:
+
+dataloader:
+  batch_size: 1
+  num_workers: 1
+
+experiment:
+  enable_sanity_check: True
+  resume_ckpt_path: ./checkpoints/PostCam/postcam.ckpt
+  output_path: ./output
+  cfg_scale: 5.0
+
+checkpoints:
+  text_encoder_path: ./checkpoints/Wan2.1-T2V-1.3B/models_t5_umt5-xxl-enc-bf16.pth
+  vae_path: ./checkpoints/Wan2.1-T2V-1.3B/Wan2.1_VAE.pth
+  dit_path: ./checkpoints/Wan2.1-T2V-1.3B/diffusion_pytorch_model.safetensors
+
+vae_kwargs:
+  tiled: False
+  tile_size: [34, 34]
+  tile_stride: [18, 16]
+
+dit_kwargs:
+  has_image_input: False
+  patch_size: [1, 2, 2]
+  in_dim: 16
+  dim: 1536
+  ffn_dim: 8960
+  freq_dim: 256
+  text_dim: 4096
+  out_dim: 16
+  num_heads: 12
+  num_layers: 30
+  eps: 1e-6
